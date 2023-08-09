@@ -19,10 +19,10 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final AtomicInteger nextId = new AtomicInteger();
 
     private MemoryCandidateRepository() {
-        save(new Candidate(0, "Candidate1", "description1", LocalDateTime.now(), 1));
-        save(new Candidate(1, "Candidate2", "description2", LocalDateTime.now(), 1));
-        save(new Candidate(2, "Candidate3", "description3", LocalDateTime.now(), 1));
-        save(new Candidate(3, "Candidate4", "description4", LocalDateTime.now(), 2));
+        save(new Candidate(0, "Candidate1", "description1", LocalDateTime.now(), 1, 0));
+        save(new Candidate(1, "Candidate2", "description2", LocalDateTime.now(), 1, 0));
+        save(new Candidate(2, "Candidate3", "description3", LocalDateTime.now(), 1, 0));
+        save(new Candidate(3, "Candidate4", "description4", LocalDateTime.now(), 2, 0));
     }
 
     @Override
@@ -45,7 +45,8 @@ public class MemoryCandidateRepository implements CandidateRepository {
                         candidate.getName(),
                         candidate.getDescription(),
                         candidate.getCreationDate(),
-                        candidate.getCityId())
+                        candidate.getCityId(),
+                        candidate.getFileId())
         ) != null;
     }
 

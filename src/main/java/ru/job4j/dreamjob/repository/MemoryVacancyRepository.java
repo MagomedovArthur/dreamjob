@@ -19,12 +19,12 @@ public class MemoryVacancyRepository implements VacancyRepository {
     private final AtomicInteger nextId = new AtomicInteger();
 
     private MemoryVacancyRepository() {
-        save(new Vacancy(0, "Intern Java Developer", "description1", LocalDateTime.now(), true, 1));
-        save(new Vacancy(1, "Junior Java Developer", "description2", LocalDateTime.now(), true, 2));
-        save(new Vacancy(2, "Junior+ Java Developer", "description3", LocalDateTime.now(), true, 3));
-        save(new Vacancy(3, "Middle Java Developer", "description4", LocalDateTime.now(), true, 1));
-        save(new Vacancy(4, "Middle+ Java Developer", "description5", LocalDateTime.now(), false, 1));
-        save(new Vacancy(5, "Senior Java Developer", "description6", LocalDateTime.now(), true, 1));
+        save(new Vacancy(0, "Intern Java Developer", "description1", LocalDateTime.now(), true, 1, 0));
+        save(new Vacancy(1, "Junior Java Developer", "description2", LocalDateTime.now(), true, 2, 0));
+        save(new Vacancy(2, "Junior+ Java Developer", "description3", LocalDateTime.now(), true, 3, 0));
+        save(new Vacancy(3, "Middle Java Developer", "description4", LocalDateTime.now(), true, 1, 0));
+        save(new Vacancy(4, "Middle+ Java Developer", "description5", LocalDateTime.now(), false, 1, 0));
+        save(new Vacancy(5, "Senior Java Developer", "description6", LocalDateTime.now(), true, 1, 0));
     }
 
     @Override
@@ -48,7 +48,8 @@ public class MemoryVacancyRepository implements VacancyRepository {
                         vacancy.getDescription(),
                         vacancy.getCreationDate(),
                         vacancy.getVisible(),
-                        vacancy.getCityId())
+                        vacancy.getCityId(),
+                        vacancy.getFileId())
         ) != null;
     }
 
