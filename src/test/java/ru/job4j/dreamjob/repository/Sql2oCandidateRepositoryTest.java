@@ -15,7 +15,7 @@ import static java.util.Optional.empty;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@Disabled
+
 class Sql2oCandidateRepositoryTest {
 
     private static Sql2oCandidateRepository sql2oCandidateRepository;
