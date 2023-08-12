@@ -1,5 +1,7 @@
 package ru.job4j.dreamjob.repository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.job4j.dreamjob.model.User;
@@ -9,6 +11,7 @@ import java.util.Optional;
 @Repository
 public class Sql2oUserRepository implements UserRepository {
 
+    private static final Logger LOG = LoggerFactory.getLogger(Sql2oUserRepository.class.getName());
     private final Sql2o sql2o;
 
     public Sql2oUserRepository(Sql2o sql2o) {
@@ -28,10 +31,11 @@ public class Sql2oUserRepository implements UserRepository {
                     .addParameter("password", user.getPassword());
             int generatedId = query.executeUpdate().getKey(Integer.class);
             user.setId(generatedId);
+            return Optional.of(user);
         } catch (Exception exception) {
-            return Optional.empty();
+            LOG.info("Попытка зарегестрировать существующего пользователя, Exception in log example", exception);
         }
-        return Optional.of(user);
+        return Optional.empty();
     }
 
     @Override
