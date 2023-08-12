@@ -17,5 +17,4 @@ public interface VacancyService {
     Optional<Vacancy> findById(int id);
 
     Collection<Vacancy> findAll();
-
 }
